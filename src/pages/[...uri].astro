@@ -21,28 +21,29 @@ function resolveContentTemplate(node) {
     case "Page":
       template = Single;
       break;
-    case "Category":
-      template = Archive;
-      break;
-    case "Tag":
-      template = Archive;
-      break;
+    // case "Category":
+    //   template = Archive;
+    //   break;
+    // case "Tag":
+    //   template = Archive;
+    //   break;
     default:
       template = Single;
   }
-
   return template;
 }
 
 const Template = resolveContentTemplate(node);
+const layout = node?.p_layout?.pageLayout;
+const side_components = node?.p_layout?.sideComponents;
 ---
 
 <MainLayout
   title={node.title || node.name}
   description={node.excerpt}
   slug={slug}
-  layout={node.p_layout.pageLayout}
-  side_components={node.p_layout.sideComponents}
+  layout={layout}
+  side_components={side_components}
 >
   <Template node={node} />
 </MainLayout>

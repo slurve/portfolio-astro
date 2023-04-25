@@ -7,7 +7,7 @@ import Aside from "../components/Aside.astro";
 import { navQuery } from "../lib/api";
 const { menus, generalSettings } = await navQuery();
 const primaryMenu = menus.nodes[0];
-const { title, description, layout, slug, side_components } = Astro.props;
+const { title, description, slug, layout, side_components } = Astro.props;
 ---
 
 <html lang="en">
