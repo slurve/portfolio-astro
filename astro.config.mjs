@@ -1,7 +1,8 @@
 import { defineConfig } from "astro/config";
+import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
-  output: "static",
-  server: { port: 8080 },
+  output: "server",
+  adapter: netlify(),
 });
