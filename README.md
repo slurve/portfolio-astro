@@ -1,11 +1,7 @@
-# Astro WordPress Starter
-
-This project is meant to be a flexible starting point for people interested in using [Astro](https://astro.build/) with WordPress as a headless CMS. If you want some additional resources to help get you started, check out the blog post and video linked below.
-
-[✍️ Read the step-by-step tutorial](https://developers.wpengine.com/blog/building-a-headless-wordpress-site-with-astro)
-[📹 Watch the video](https://www.youtube.com/watch?v=BcoxZZIfESI)
+# Portfolio Site powered by WordPress/GraphQL/Astro
 
 ## Requirements
+
 - [WordPress](https://wordpress.org/)
 - [WPGraphQL](https://www.wpgraphql.com/docs/introduction)
 - Environment Variables
@@ -21,24 +17,17 @@ This starter project leans into the WordPress CMS routing capabilities and uses 
 #### Adding Content Types
 
 This project comes with built in support for Post, Page, Tag, and Category types, but could easily be extended for custom post types or other native content types. To add support for a custom post type you would do the following:
+
 1. Add a GraphQL fragment for your post type to `getNodeByURI` from `api.js`
 2. Add an Astro component as a template
 3. Add a case to the switch statement in `[...uri].astro` to catch the content type and resolve the template
 
 #### Overriding Default Routing
 
-Since routes using [rest parameters in Astro](https://docs.astro.build/en/core-concepts/routing/#rest-parameters) come last in the [route priority order](https://docs.astro.build/en/core-concepts/routing/#route-priority-order), you can easily override this catch-all routing pattern by creating a more specific route to handle a given path. 
+Since routes using [rest parameters in Astro](https://docs.astro.build/en/core-concepts/routing/#rest-parameters) come last in the [route priority order](https://docs.astro.build/en/core-concepts/routing/#route-priority-order), you can easily override this catch-all routing pattern by creating a more specific route to handle a given path.
 
 For example, if you want the path `/category/food-trucks` to be handled by a different Astro component, you can add a corresponding file to the `pages` directory to override the default `...uri` route.
 
-
-### Menus 
+### Menus
 
 By default, the menu assigned to the `Primary` menu location will be used for your header menu.
-
-
-## Headless WordPress Hosting with Atlas
-
-WP Engine's Atlas platform provides a performant and user-friendly hosting platform for headless WordPress and Node-based JavaScript apps. [Create a free sandbox account](https://wpengine.com/atlas/) to try the platform, and check out our Astro deployment guide for instruction to deploy to the platform.
-
-
