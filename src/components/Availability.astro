@@ -7,6 +7,11 @@ const availability = data.pageBy.home.availability;
 <h2>Availability</h2>
 <div class="availability" set:html={availability} />
 
+<div class="connect">
+  <p>I'd love to set up a time to hear about your project. Let's talk!</p>
+  <a href="/contact" class="button"> Contact</a>
+</div>
+
 <style lang="scss" is:global>
   .availability {
     margin-bottom: 2rem;
@@ -36,5 +41,13 @@ const availability = data.pageBy.home.availability;
     .limited {
       color: var(--color-limited);
     }
+  }
+
+  .connect {
+    font-size: 1rem;
+  }
+
+  .contact .connect {
+    display: none;
   }
 </style>

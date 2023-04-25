@@ -125,6 +125,7 @@ h2 {
 
   &:hover {
     background-color: var(--color-link-hover);
+    color: var(--color-light);
   }
 }
 
