@@ -1,0 +1,40 @@
+---
+import { homePageQuery } from "../lib/api";
+const data = await homePageQuery();
+const availability = data.pageBy.home.availability;
+---
+
+<h2>Availability</h2>
+<div class="availability" set:html={availability} />
+
+<style lang="scss" is:global>
+  .availability {
+    margin-bottom: 2rem;
+    color: var(--color-gray-medium);
+
+    span {
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.3;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    br {
+      display: none;
+    }
+
+    .unavailable {
+      color: var(--color-unavailable);
+    }
+
+    .available {
+      color: var(--color-available);
+    }
+
+    .limited {
+      color: var(--color-limited);
+    }
+  }
+</style>

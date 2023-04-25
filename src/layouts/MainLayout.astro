@@ -1,0 +1,69 @@
+---
+import "../styles/global.css";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import Availabilty from "../components/Availabilty.astro";
+import Aside from "../components/Aside.astro";
+import { navQuery } from "../lib/api";
+const { menus, generalSettings } = await navQuery();
+const primaryMenu = menus.nodes[0];
+const { title, description, layout, slug, side_components } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{`${title} | ${generalSettings.title}`}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body class={slug}>
+    <div class="wrap">
+      <SiteNav menu={primaryMenu} generalSettings={generalSettings} />
+      <main class={layout ? layout : "wide"}>
+        <slot />
+        {
+          layout == "split" && (
+            <aside>
+              {side_components.map((content) => {
+                return <Aside content={content} />;
+              })}
+            </aside>
+          )
+        }
+      </main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>
+
+<style lang="scss">
+  .wrap {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 0;
+    flex: 1 1 100%;
+
+    &.split {
+      display: flex;
+
+      aside {
+        flex: 1 1 32%;
+        padding: 8rem 2rem 0 6rem;
+      }
+    }
+  }
+</style>

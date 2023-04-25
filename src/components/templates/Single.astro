@@ -1,0 +1,71 @@
+---
+import Form from "../Form.astro";
+const { node } = Astro.props;
+---
+
+<div class="single">
+  <h1>{node.title}</h1>
+
+  {
+    node.categories
+      ? node.categories.nodes.map((category) => (
+          <a class="term-link" href={category.uri}>
+            {category.name}
+          </a>
+        ))
+      : null
+  }
+
+  {
+    node.__typename === "Post" ? (
+      <p class="post-details">
+        Posted on{" "}
+        <time datetime={node.date}>
+          {new Date(node.date).toLocaleDateString()}
+        </time>
+      </p>
+    ) : null
+  }
+
+  <article set:html={node.content} />
+  {node.title == "Contact" && <Form />}
+</div>
+<style is:global lang="scss">
+  .wp-block-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .split .single {
+    flex: 1 1 68%;
+  }
+
+  .list {
+    margin: 1rem 0 2rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    @media all and (min-width: 960px) {
+      max-width: 90%;
+    }
+
+    li {
+      list-style-type: none;
+      background-color: var(--color-gray-light);
+      color: var(--color-gray-medium);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-top-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+
+      @media all and (min-width: 768px) {
+        font-size: 1rem;
+        padding: 15px 30px;
+      }
+    }
+  }
+</style>

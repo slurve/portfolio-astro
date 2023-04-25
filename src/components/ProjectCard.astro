@@ -1,0 +1,166 @@
+---
+const { project } = Astro.props;
+import GlobalStyles from "../GlobalStyles.astro";
+---
+
+<div class="project">
+  <div class="project-screen">
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+      href={project.projectCustom.projectUrl}
+    >
+      <picture>
+        <source
+          srcset={project?.featuredImage?.node?.srcSet}
+          type={project?.featuredImage?.node?.mimeType}
+        />
+        <img src={project?.featuredImage?.node?.srcSet} alt={project.title} />
+      </picture>
+    </a>
+  </div>
+  <div class="project-details">
+    <div>
+      <h2>{project.title}</h2>
+      <h3>
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href={project.projectCustom.projectUrl}
+        >
+          {project.projectCustom.projectUrl}
+        </a>
+      </h3>
+      <span set:html={project.projectCustom.projectSummary} />
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .project {
+    border-bottom: 1px solid #eee;
+    box-shadow: inset 0 -8px 8px -10px #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 6rem;
+    overflow-y: hidden;
+
+    &:first-child {
+      margin-top: 6rem;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @media all and (min-width: 960px) {
+      align-items: center;
+      flex-direction: row;
+
+      &:nth-child(2n) {
+        .project-screen {
+          order: 2;
+        }
+
+        .project-details {
+          order: 1;
+        }
+      }
+    }
+
+    @media all and (min-width: 1200px) {
+      align-items: flex-end;
+    }
+  }
+
+  .project-screen {
+    order: 2;
+    position: relative;
+    text-align: center;
+
+    @media all and (min-width: 960px) {
+      flex: 1 1 50%;
+      order: 1;
+    }
+
+    img {
+      box-shadow: 0 0 19px 0 #ccc;
+      display: block;
+      margin: 0 auto -20px;
+      max-width: 300px;
+
+      @media all and (min-width: 768px) {
+        margin: 0 auto;
+        max-width: 400px;
+      }
+
+      @keyframes screenHover {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          transform: translate3d(0, -12px, 0);
+        }
+      }
+
+      @media all and (min-width: 960px) {
+        &:hover {
+          animation-delay: 0;
+          animation-duration: 0.4s;
+          animation-fill-mode: both;
+          animation-name: screenHover;
+          animation-timing-function: cubic-bezier(0.66, 0.01, 0.82, 0.96) 0.4s;
+        }
+      }
+
+      @media all and (min-width: 1200px) {
+        bottom: -40px;
+        left: 10%;
+        max-width: 500px;
+        position: absolute;
+      }
+    }
+  }
+
+  .project-details {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    order: 1;
+
+    @media all and (min-width: 960px) {
+      flex: 1 1 50%;
+      line-height: 1.9rem;
+      order: 2;
+    }
+
+    div {
+      padding-bottom: 4rem;
+      width: 100%;
+
+      @media all and (min-width: 768px) {
+        padding: 4rem;
+      }
+    }
+
+    a {
+      color: var(--color-gray-medium);
+      text-decoration: none;
+      border-bottom: none;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 0 0 2px;
+    }
+
+    h3 {
+      color: var(--color-gray-medium);
+      font-size: 16px;
+      font-weight: 500;
+      margin: 0 0 1rem;
+    }
+  }
+</style>

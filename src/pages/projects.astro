@@ -1,0 +1,19 @@
+---
+import ProjectCard from "../components/ProjectCard.astro";
+import Brands from "../components/Brands.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import { projectsQuery } from "../lib/api";
+
+const data = await projectsQuery();
+const projects = data.projects.nodes;
+---
+
+<MainLayout title="Projects" slug="projects">
+  <h1>Projects</h1>
+  <Brands />
+  {
+    projects.map((project) => {
+      return <ProjectCard project={project} />;
+    })
+  }
+</MainLayout>

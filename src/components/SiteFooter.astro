@@ -1,0 +1,44 @@
+---
+import Social from "../components/Social.astro";
+---
+
+<footer>
+  <Social />
+</footer>
+
+<style lang="scss">
+  footer {
+    align-items: center;
+    background-image: linear-gradient(#fff, rgba(#ddd, 0.6));
+    color: var(--color-gray-light);
+    display: flex;
+    flex: 1 1 100px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    justify-content: center;
+    margin-top: 4rem;
+    padding: 4rem 1rem 2rem;
+
+    @media all and (min-width: 768px) {
+      margin-top: 8rem;
+      padding-bottom: 2rem;
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+
+    @media all and (min-width: 960px) {
+      justify-content: flex-end;
+      margin-top: auto;
+    }
+
+    a {
+      align-items: center;
+      display: inline-flex;
+      margin: 0 10px;
+    }
+
+    span {
+      display: none;
+    }
+  }
+</style>

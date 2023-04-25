@@ -1,0 +1,26 @@
+---
+import Social from "../components/Social.astro";
+import Availability from "../components/Availability.astro";
+---
+
+<div class="connect">
+  <h2>Let's connect</h2>
+  <p>
+    If filling out contact forms isn't your thing, please feel free to send me
+    an email at <strong
+      ><a href="mailto:tom@slurve.com">tom@slurve.com</a></strong
+    >. You can also find me on the web:
+  </p>
+  <Social />
+</div>
+
+<style lang="scss">
+  .connect {
+    margin-bottom: 2rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+</style>

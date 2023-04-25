@@ -1,0 +1,21 @@
+---
+import Hero from "../components/Hero.astro";
+import PostCard from "../components/PostCard.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import { homePagePostsQuery } from "../lib/api";
+
+const data = await homePagePostsQuery();
+const posts = data.posts.nodes;
+---
+
+<MainLayout title="Blog">
+  <main>
+    <Hero />
+    <h2>Recent Posts</h2>
+    {
+      posts.map((post) => {
+        return <PostCard post={post} />;
+      })
+    }
+  </main>
+</MainLayout>
