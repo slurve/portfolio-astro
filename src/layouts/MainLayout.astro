@@ -54,15 +54,22 @@ const { title, description, slug, layout, side_components } = Astro.props;
   main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 4rem 0;
+    padding: 4rem 2rem;
     flex: 1 1 100%;
 
     &.split {
       display: flex;
+      flex-direction: column;
+
+      @media all and (min-width: 960px) {
+        flex-direction: row;
+      }
 
       aside {
-        flex: 1 1 32%;
-        padding: 8rem 2rem 0 6rem;
+        @media all and (min-width: 960px) {
+          flex: 1 1 32%;
+          padding: 8rem 2rem 0 6rem;
+        }
       }
     }
   }

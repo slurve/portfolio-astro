@@ -50,28 +50,41 @@ const { menu, generalSettings } = Astro.props;
 
   header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 60px;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
     padding: 2rem;
+
+    @media all and (min-width: 350px) {
+      flex-direction: row;
+    }
+
+    @media all and (min-width: 960px) {
+      gap: 60px;
+    }
   }
 
   nav {
     flex: 1 1 80%;
     margin-right: 6px;
-    text-align: right;
+
+    @media all and (min-width: 350px) {
+      text-align: right;
+    }
 
     a {
       color: var(--color-link);
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin: 0 0 0 18px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin: 0 0 0 14px;
       padding: 0 0 3px;
       text-decoration: none;
       border-bottom: none;
 
       @media all and (min-width: 390px) {
         font-size: 1rem;
+        margin: 0 0 0 18px;
       }
 
       @media all and (min-width: 490px) {
