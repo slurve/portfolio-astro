@@ -23,7 +23,7 @@ const { title, description, slug, layout, side_components } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{`${title} | ${generalSettings.title}`}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={generalSettings.description} />
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
